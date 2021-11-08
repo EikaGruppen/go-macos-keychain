@@ -8,7 +8,7 @@ The only dependency is [keybase/go-keychain](https://github.com/keybase/go-keych
 
 When fetching a key, the user will be asked if the app should be granted permission to retrieve the key: ["Allow", "Deny", "Always allow]
 
-If the user chooses "Always allow", the apps will be added in the access-list for that key. NOTE: A new verion of the app will ultimatly make the user allow it again, as the checksum of the app has changed.
+If the user chooses "Always allow", the app will be added in the access-list for that key. NOTE: A new version of the app will ultimatly prompt the user to allow it again, as the checksum of the app has changed.
 More details [here](https://developer.apple.com/documentation/security/keychain_services/access_control_lists)
 
 ## Usage
