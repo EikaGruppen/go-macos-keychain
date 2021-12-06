@@ -20,15 +20,19 @@ name, value := "id_for_pass", "the pass"
 
 err := keys.Update(name, value)
 if err != nil {
-	if err == keychain.KeyNotFoundError {
-		// do something
-	} else {
 	//handle err
-	}
 }
 
 fromKeychain, err := keys.Get(name)
-//handle err
+if err != nil {
+	if _, ok := err.(*keychain.KeyNotFoundError); ok {
+		//handle
+	} else if _, ok := err.(*keychain.UserAbortedPromptError); ok {
+		//handle
+	} else {
+		//handle
+	}
+}
 
 err = keys.Delete(name)
 //handle err
