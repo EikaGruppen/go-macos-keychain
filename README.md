@@ -44,6 +44,22 @@ err = keys.Delete(name)
 //handle err
 ```
 
+## Prompt
+
+```
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃                                                                ┃
+┃     _my app_ wants to access _my item_ in OS keychain          ┃
+┃   =====================================================        ┃
+┃                                                                ┃
+┃                                                                ┃
+┃        | Always allow |      | Deny |       | Allow |          ┃
+┃                                                                ┃
+┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
+```
+
+The user will be prompted with something like this. If the user chooses `Always allow`, they will not be prompted until the checksum of the app changes (new build). 
+
 ## Non-goals
 
 - Creating custom keychains
