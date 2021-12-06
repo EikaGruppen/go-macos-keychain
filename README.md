@@ -58,7 +58,7 @@ err = keys.Delete(name)
 ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
 ```
 
-The user will be prompted with something like this. If the user chooses `Always allow`, they will not be prompted until the checksum of the app changes (new build). 
+The user will be prompted with something like this as a macOS GUI window. If the user chooses `Always allow`, they will not be prompted until the checksum of the app changes (new build). 
 
 ## Non-goals
 
