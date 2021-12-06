@@ -46,3 +46,17 @@ func TestKeyItems(t *testing.T) {
 	}
 
 }
+
+func TestKeyItemNotExisting(t *testing.T) {
+	keys := keychain.NewKeychainClient("my-app")
+
+	_, err := keys.Get("non-existing")
+	if err == nil {
+		t.Fatal("No error, should fail with non-exisiting key item")
+	} else {
+	  if _, ok := err.(*keychain.KeyNotFoundError); !ok {
+	  t.Fatalf("Got unexpected error %s", err)
+	  }
+	}
+
+}
