@@ -11,6 +11,12 @@ When fetching a key, the user will be asked if the app should be granted permiss
 If the user chooses "Always allow", the app will be added in the access-list for that key. NOTE: A new version of the app will ultimatly prompt the user to allow it again, as the checksum of the app has changed.
 More details [here](https://developer.apple.com/documentation/security/keychain_services/access_control_lists)
 
+## Get
+
+```bash
+go get github.com/EikaGruppen/go-macos-keychain@v0.1.0
+```
+
 ## Usage
 
 ```go
