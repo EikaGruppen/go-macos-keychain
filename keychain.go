@@ -76,7 +76,7 @@ func (k *keychainClient) Delete(name string) error {
 func (k *keychainClient) buildItem(keyName string) kc.Item {
 	item := kc.NewItem()
 	item.SetSecClass(kc.SecClassGenericPassword)
-	item.SetService(keyName)
-	item.SetLabel(k.name)
+	item.SetService(k.name)
+	item.SetLabel(keyName)
 	return item
 }
