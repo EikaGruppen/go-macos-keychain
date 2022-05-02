@@ -47,6 +47,18 @@ func TestKeyItems(t *testing.T) {
 
 }
 
+func TestMultipleKeys(t *testing.T) {
+	client := keychain.NewKeychainClient("testing")
+	err := client.Update("key a", "123")
+	if err != nil {
+		t.Fatal(err)
+	}
+	err = client.Update("key b", "123")
+	if err != nil {
+		t.Fatal(err)
+	}
+}
+
 func TestKeyItemNotExisting(t *testing.T) {
 	keys := keychain.NewKeychainClient("my-app")
 

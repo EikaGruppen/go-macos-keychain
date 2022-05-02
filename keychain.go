@@ -33,16 +33,28 @@ func (e *KeyNotFoundError) Error() string {
 // Update a key
 // Will create one if it does not exist
 func (k *keychainClient) Update(name string, password string) error {
-	item := k.buildItem(name)
-	item.SetData([]byte(password))
+	newItem := k.buildItem(name)
+	newItem.SetData([]byte(password))
 
-	err := kc.AddItem(item)
-	if err == kc.Error(-25299) {
-	  existing := k.buildItem(name)
-		return kc.UpdateItem(existing, item)
-	} else {
-		return err
+	query := k.buildItem(name)
+	query.SetMatchLimit(kc.MatchLimitOne)
+	query.SetReturnAttributes(true)
+	results, err := kc.QueryItem(query)
+	if err != nil {
+		return fmt.Errorf("Got error while inserting/updating '%s': %w", name, err)
 	}
+	if len(results) > 0 {
+		err = kc.UpdateItem(query, newItem)
+		if err != nil {
+			return fmt.Errorf("Got error while updating '%s': %w", name, err)
+		}
+	} else {
+		err = kc.AddItem(newItem)
+		if err != nil {
+			return fmt.Errorf("Got error while inserting '%s': %w", name, err)
+		}
+	}
+	return nil
 }
 
 // Get a key with the specified name
@@ -77,6 +89,7 @@ func (k *keychainClient) buildItem(keyName string) kc.Item {
 	item := kc.NewItem()
 	item.SetSecClass(kc.SecClassGenericPassword)
 	item.SetService(k.name)
+	item.SetAccount(keyName)
 	item.SetLabel(keyName)
 	return item
 }
