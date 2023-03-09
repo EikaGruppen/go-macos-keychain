@@ -1,5 +1,5 @@
 module github.com/EikaGruppen/go-macos-keychain
 
-go 1.17
+go 1.20
 
-require github.com/keybase/go-keychain v0.0.0-20211119201326-e02f34051621
+require github.com/keybase/go-keychain v0.0.0-20230307172405-3e4884637dd1
